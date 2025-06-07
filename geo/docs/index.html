@@ -10,15 +10,12 @@
     <button type="submit">Submit</button>
   </form>
   <p id="status"></p>
-  <script src="token.js"> </script>
-
   <script>
     const repo = "RandomGuy1520/RandomGuy1520.github.io";
     const token = "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";
     document.getElementById("problem-form").onsubmit = async (e) => {
       e.preventDefault();
       const content = document.getElementById("problem-input").value;
-
       const sha = await getCurrentSha();
       const body = {
         message: "User submitted new geometry problem",
