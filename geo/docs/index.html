@@ -12,8 +12,8 @@
   <p id="status"></p>
 
   <script>
-    const repo = "yourusername/alpha-geometry-site";
-    const token = "ghp_your_github_token_here"; // WARNING: only for testing! Never expose in public!
+    const repo = "RandomGuy1520/RandomGuy1520.github.io";
+    const token = "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";
     
     document.getElementById("problem-form").onsubmit = async (e) => {
       e.preventDefault();
@@ -26,7 +26,7 @@
         ...(sha && { sha })
       };
 
-      const response = await fetch(`https://api.github.com/repos/${repo}/contents/problem.txt`, {
+      const response = await fetch(`https://api.github.com/repos/RandomGuy1520/RandomGuy1520.github.io/contents/geo/problem.txt`, {
         method: "PUT",
         headers: {
           Authorization: `token ${token}`,
@@ -43,7 +43,7 @@
     };
 
     async function getCurrentSha() {
-      const response = await fetch(`https://api.github.com/repos/${repo}/contents/problem.txt`, {
+      const response = await fetch(`https://api.github.com/repos/RandomGuy1520/RandomGuy1520.github.io/contents/geo/problem.txt`, {
         headers: { Authorization: `token ${token}` }
       });
       if (!response.ok) return null;
