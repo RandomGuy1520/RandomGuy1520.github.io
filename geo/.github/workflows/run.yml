@@ -1,0 +1,29 @@
+name: Run AlphaGeometry
+
+on:
+  push:
+    paths:
+      - 'problem.txt'
+
+jobs:
+  solve-geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Python and AlphaGeometry
+        run: |
+          sudo apt update
+          git clone https://github.com/foldl/AlphaGeometryRE.git
+          cd AlphaGeometryRE
+          pip install -r requirements.txt
+      - name: Run AlphaGeometry
+        run: |
+          cd AlphaGeometryRE
+          python src/alphageometry.py --problems_file geo/problem.txt --problem_name Problem > geo/docs/output.html
+      - name: Commit solution
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add geo/docs/output.html
+          git commit -m "Update solution output"
+          git push
